@@ -1,23 +1,28 @@
-let nome = "Homem Aranha"
-let xp = 10002
-let nivel = ""
+class Hero {
+    // type: 0 = mago, 1 = guerreiro, 2 = monge, 3 = ninja;
+    constructor(name, age, type) {
+        this.name = name;
+        this.age = age;
 
-if (xp <= 1000) {
-  nivel = "Ferro"
-} else if (xp <= 2000) {
-  nivel = "Bronze"
-} else if (xp <= 6000) {
-  nivel = "Prata"
-} else if (xp <= 7000) {
-  nivel = "Ouro"
-} else if (xp <= 8000) {
-  nivel = "Platina"
-} else if (xp <= 9000) {
-  nivel = "Ascendente"
-} else if (xp <= 10000) {
-  nivel = "Imortal"
-} else if (xp >= 10001) {
-  nivel = "Radiante"
+        this.types = ["mago", "guerreiro", "monge", "ninja"];
+        this.attacks = ["magia", "espada", "artes marciais", "shuriken"]
+        this.type = type % this.types.length;
+    }
+    getType() {
+        return this.types[this.type];
+    }
+    getAttack() {
+        return this.attacks[this.type];
+    }
+    attack() {
+        console.log(`O ${this.getType()} atacou usando ${this.getAttack()}`);
+    }
+    info() {
+        console.log(`Nome: ${this.name}, idade: ${this.age}, Tipo: ${this.getType()}`);
+    }
 }
 
-console.log("O Herói de nome " + nome + " está no nível de " + nivel)
+for(let i = 0; i < 4; i++) {
+    let jmsmarcelo = new Hero("jmsmarcelo", 0, i);
+    jmsmarcelo.attack();
+}
